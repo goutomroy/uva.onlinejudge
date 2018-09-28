@@ -1,0 +1,189 @@
+#include<stdio.h>
+#include<math.h>
+
+long long store[50002] ;
+
+long long Find_row( long long mid, long long celing )
+{
+	if( celing ==1 ) return mid ;
+
+	long long square, middle, start = 0, end = 50000 ;
+	
+	square = celing*celing ;
+
+	middle = ( start + end )/2 ;
+
+	while( start<=end )
+	{
+		if( store[middle]==square) return mid+middle ;
+
+		else if( store[middle]>square)
+		{
+			end = middle ;
+			middle = ( start + end )/2 ;
+		}
+		else
+		{
+			start = middle ;
+			middle = ( start + end )/2 ;
+		}
+	}
+}
+
+void store_row( void )
+{
+	long long i, c=1 ;
+
+	for(i=3;i<100000;i+=2) 
+		store[c++] = i*i ;
+}
+
+int  main(void)
+{
+	//freopen("10920.in","r",stdin);
+
+	store_row();
+
+	long long sz, p, celing, mid, row, col, count, num, dif ;
+
+	double root ;
+
+	while( scanf("%lld %lld",&sz,&p)==2 && ( sz||p) )
+	{
+		root = sqrt( p );
+
+		celing = ceil(root);
+
+		if( celing%2==0) celing++;
+
+		num = celing*celing ;
+
+		mid = sz/2 + 1 ;
+
+		row = col = Find_row( mid, celing );
+
+		dif = celing - 1;
+
+		for(count=0;count<4 ;count++)
+		{
+			if( count==3)
+			{
+				col = col + num - p ;
+				break ;
+			}
+
+			else if( num - dif > p )
+			{
+				if( count==0)
+				{
+					row = row - dif ;
+					num-= dif ;
+				}
+				else if( count==1 )
+				{
+					col = col - dif ;
+					num-= dif ;
+				}
+				else if( count==2)
+				{
+					row = row + dif ;
+					num -= dif ;
+				}
+			}
+			else
+			{
+				if( count==0)
+				{
+					row = row - ( num-p ) ;
+					break;
+				}
+				else if( count==1 )
+				{
+					col = col - ( num - p ) ;
+					break;
+				}
+				else if( count==2)
+				{
+					row = row + (num-p) ; break;
+				}
+			}
+		}
+
+		printf("Line = %lld, column = %lld.\n",row,col);
+	}
+	return 0;
+}
+***********************************************************
+why te?
+#include<stdio.h>
+void main()
+{
+	long row,col,n,num,t,k,p,start,tag;
+	while(scanf("%ld%ld",&n,&num)==2 && (n&&num) )
+	{
+		start=n*n;
+		tag=n;
+		n++;k=p=0;
+		while(1)
+		{
+			
+			for(n--,col=n,k++,row=k;row<=col;row++)
+			{
+				if(num==start)
+				{
+					printf("Line = %ld, column = %ld.\n",(tag-row)+1,col);
+					p=1;
+					break;
+				}
+				start--;
+			}
+			if(p==1)
+				break;
+
+     for(row=n,col=n-1,t=k+1;col>=t;col--)
+	 {
+		 if(num==start)
+				{
+					printf("Line = %ld, column = %ld.\n",(tag-row)+1,col);
+					p=1;
+					break;
+				}
+				start--;
+			
+		}
+		if(p==1)
+				break;
+
+		for(col=k,row=n;row>=k;row--)
+		{
+			if(num==start)
+				{
+					printf("Line = %ld, column = %ld.\n",(tag-row)+1,col);
+					p=1;
+					break;
+				}
+				start--;
+			
+		}
+	if(p==1)
+			break;
+
+	for(row=k,col=t;col<=n-1;col++)
+		{
+			if(num==start)
+				{
+					printf("Line = %ld, column = %ld.\n",(tag-row)+1,col);
+					p=1;
+					
+					break;
+				}
+				start--;
+			}
+		
+	if(p==1)
+				break;
+	}
+	}
+	}
+
+		 

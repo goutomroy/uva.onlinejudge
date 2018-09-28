@@ -1,0 +1,28 @@
+#include<stdio.h>
+void main( )
+{
+long long  i,a,sum,n,max;
+while(scanf("%lld",&n)==1 && n)
+{
+    sum=max=0;
+    for(i=0;i<n;i++)
+	{
+    scanf("%lld",&a);
+    sum=sum+a;
+
+   if(sum>max)
+        max=sum;
+   
+   if(sum<1)
+       sum=0;
+}
+if(sum)
+{
+     printf("The maximum winning streak is %lld.\n",max);
+}
+else
+{
+    printf("Losing streak.\n");
+}
+}
+}

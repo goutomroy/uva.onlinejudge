@@ -1,0 +1,30 @@
+#include <stdio.h>
+long long  add( long long n)
+{
+	long long  d,m,sum;
+	if(n==0)
+   return 0;
+	if(n<10)
+		return(n*(n+1)/2);
+	d=n/10;
+	m=n%10;
+	sum=d*45+(m*(m+1)/2);
+	return(sum+add(d));
+}
+
+void main()
+{
+	long long  n,m,roy;
+
+	while(scanf("%lld %lld", &n, &m)==2)
+{
+		if(n<0 && m<0)
+			break;
+		if(n==0)
+			roy=add(m);
+		else
+			roy=add(m)-add(n-1);
+		printf("%lld\n", roy);
+	}
+}
+

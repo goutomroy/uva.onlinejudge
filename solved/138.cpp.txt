@@ -1,0 +1,23 @@
+#include<stdio.h>
+void main( )
+{
+long a=6,b=7,diff;
+int i;
+diff=b-(a*(a-1))/2;
+for(i=1;i<=10;i++)
+{
+while(diff!=0)
+{
+if(diff>0)
+{
+diff=diff-(++a);
+diff=diff-(a-1);
+}
+diff=diff+(++b);
+}
+printf("%10lu%10lu\n",a,b);
+diff=diff-(++a);
+diff=diff-(a-1);
+diff=diff+(++b);
+}
+}

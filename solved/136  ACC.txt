@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<math.h>
+void main( )
+{
+long long n=859963392,p=1499,q,j,x,i;
+while(p!=1500)
+{
+i=0;q=1;x=n;
+while(n%2==0)
+n=n/2;
+j=3;
+while(j<=sqrt(n)+1)
+{
+if(n%j==0)
+n=n/j;
+else
+{
+j=j+2;
+if(j>5)
+{
+q=0;
+break;
+}
+}
+}
+if(n>1 && (n==2||n==3||n==5) && q==1)
+q=1;
+if(n>5)
+q=0;
+if(q==1)
+p++;
+x++;n=x;
+}
+printf("The 1500'th ugly number is %lld.",x-1);
+}
+
+

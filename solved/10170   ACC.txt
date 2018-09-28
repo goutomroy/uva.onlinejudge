@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<math.h>
+void main( )
+{
+double s,d,i;
+long a;
+while(scanf("%lf %lf",&s,&d)==2)
+{
+d=d+(s*(s-1)/2);
+i=ceil((-1+sqrt(1+d*2*4))/2);
+a=i;printf("%ld\n",a);
+}
+}

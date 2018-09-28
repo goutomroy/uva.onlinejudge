@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<math.h>
+
+#define pi 2*acos(0)
+
+void main()
+{
+	double a,b,c,r;
+	
+	while(1==scanf("%lf",&r))
+	{
+		a=(pi/3+1)*r*r-(sqrt(3)/4+pi/2)*r*r;
+		
+		b=r*r-pi/4*r*r-2*a;
+		
+		c=pi/2*r*r-r*r-2*b;
+		
+		printf("%.3lf %.3lf %.3lf\n",c,4*b,4*a);
+	}
+}
